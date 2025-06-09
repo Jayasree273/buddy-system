@@ -1,12 +1,10 @@
-import Link from 'next/link';
 import Head from 'next/head';
-import styles from '../pages/Dashboard.module.css';
 
-export default function Dashboard() {
+export default function Contact() {
   return (
     <>
       <Head>
-        <title>Dashboard - Budget Buddy</title>
+        <title>Contact Us - Budget Buddy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
@@ -14,91 +12,144 @@ export default function Dashboard() {
         />
       </Head>
 
-      <header className={styles.header}>
-        <div className={styles.logo}>Budget Buddy</div>
-        <nav>
-          <Link href="/" className={styles.navLink}>Home</Link>
-          <Link href="/contact" className={styles.navLink}>Contact</Link>
-          <Link href="/about" className={styles.navLink}>About Us</Link>
-          <Link href="/login" className={styles.navLink}>Login</Link>
-        </nav>
-      </header>
+      <main className="contactSection">
+        <h1 className="contactSectionTitle">Contact Us</h1>
 
-      <main className={styles.main}>
-        <section
-          className={`${styles.card} ${styles.spendingOverview}`}
-          style={{ animationDelay: '0.1s' }}
-        >
-          <h2>Spending Overview</h2>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/shopping-cart--v1.png" alt="Groceries" />
-            <span>Groceries</span>
-            <span className={styles.amount}>₹4,500</span>
-          </div>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/restaurant.png" alt="Dining" />
-            <span>Dining</span>
-            <span className={styles.amount}>₹2,200</span>
-          </div>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/car--v1.png" alt="Transport" />
-            <span>Transport</span>
-            <span className={styles.amount}>₹1,500</span>
-          </div>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/ticket.png" alt="Entertainment" />
-            <span>Entertainment</span>
-            <span className={styles.amount}>₹1,100</span>
-          </div>
-        </section>
+        <form className="formContainer" onSubmit={(e) => e.preventDefault()}>
+          <label className="label" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="input"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name"
+            required
+          />
 
-        <section
-          className={`${styles.card} ${styles.upcomingBills}`}
-          style={{ animationDelay: '0.3s' }}
-        >
-          <h2>Upcoming Bills</h2>
-          <ul>
-            <li>
-              <div className={styles.billDetails}>
-                Electricity Bill
-                <small>Due: 15 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹3,200</div>
-            </li>
-            <li>
-              <div className={styles.billDetails}>
-                Internet Bill
-                <small>Due: 18 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹850</div>
-            </li>
-            <li>
-              <div className={styles.billDetails}>
-                Credit Card Payment
-                <small>Due: 22 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹5,000</div>
-            </li>
-            <li>
-              <div className={styles.billDetails}>
-                Water Bill
-                <small>Due: 25 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹600</div>
-            </li>
-          </ul>
-        </section>
+          <label className="label" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your.email@example.com"
+            required
+          />
 
-        <section
-          className={`${styles.card} ${styles.incomeExpense}`}
-          style={{ animationDelay: '0.5s' }}
-        >
-          <h2>Income & Expense Summary</h2>
-          <p>Total Income: <strong>₹50,000</strong></p>
-          <p>Total Expenses: <strong>₹20,000</strong></p>
-          <p>Balance: <strong>₹30,000</strong></p>
-        </section>
+          <label className="label" htmlFor="message">
+            Message
+          </label>
+          <textarea
+            className="textarea"
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+          <button className="button" type="submit">
+            Send Message
+          </button>
+        </form>
+
+        <div className="info">
+          <p>We typically respond within 1-2 business days.</p>
+        </div>
       </main>
+
+      <style jsx>{`
+        .contactSection {
+          max-width: 600px;
+          margin: 4rem auto;
+          padding: 2rem;
+          background-color: white;
+          border-radius: 12px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+          font-family: 'Inter', sans-serif;
+          animation: slideUp 1s ease-in-out;
+        }
+
+        .contactSectionTitle {
+          text-align: center;
+          font-size: 2.4rem;
+          color: #4f46e5; /* Indigo-600 */
+          margin-bottom: 2rem;
+          font-weight: 600;
+        }
+
+        .formContainer {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .label {
+          margin-top: 1rem;
+          font-weight: 600;
+          color: #333;
+        }
+
+        .input,
+        .textarea {
+          padding: 0.8rem;
+          margin-top: 0.4rem;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+        }
+
+        .input:focus,
+        .textarea:focus {
+          outline: none;
+          border-color: #4f46e5;
+          box-shadow: 0 0 5px #c7d2fe;
+        }
+
+        .textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+
+        .button {
+          margin-top: 2rem;
+          background-color: #4f46e5;
+          color: white;
+          padding: 1rem;
+          font-size: 1.1rem;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+          background-color: #4338ca;
+        }
+
+        .info {
+          margin-top: 2rem;
+          text-align: center;
+          font-size: 0.95rem;
+          color: #555;
+        }
+
+        @keyframes slideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </>
   );
 }
