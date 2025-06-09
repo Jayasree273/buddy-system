@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import styles from '../pages/Dashboard.module.css';
 
 export default function Dashboard() {
   return (
@@ -14,89 +13,162 @@ export default function Dashboard() {
         />
       </Head>
 
-      <header className={styles.header}>
-        <div className={styles.logo}>Budget Buddy</div>
+      {/* Header */}
+      <header style={{
+        backgroundColor: '#4f46e5',
+        color: 'white',
+        padding: '1.5rem 2rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        boxShadow: '0 4px 8px rgba(79, 70, 229, 0.3)',
+        fontFamily: 'Segoe UI, sans-serif'
+      }}>
+        <div style={{ fontSize: '1.8rem', fontWeight: '700' }}>Budget Buddy</div>
         <nav>
-          <Link href="/" className={styles.navLink}>Home</Link>
-          <Link href="/contact" className={styles.navLink}>Contact</Link>
-          <Link href="/about" className={styles.navLink}>About Us</Link>
-          <Link href="/login" className={styles.navLink}>Login</Link>
+          <Link href="/" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>Home</Link>
+          <Link href="/contact" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>Contact</Link>
+          <Link href="/about" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>About Us</Link>
+          <Link href="/login" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>Login</Link>
         </nav>
       </header>
 
-      <main className={styles.main}>
-        <section
-          className={`${styles.card} ${styles.spendingOverview}`}
-          style={{ animationDelay: '0.1s' }}
-        >
-          <h2>Spending Overview</h2>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/shopping-cart--v1.png" alt="Groceries" />
-            <span>Groceries</span>
-            <span className={styles.amount}>₹4,500</span>
-          </div>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/restaurant.png" alt="Dining" />
-            <span>Dining</span>
-            <span className={styles.amount}>₹2,200</span>
-          </div>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/car--v1.png" alt="Transport" />
-            <span>Transport</span>
-            <span className={styles.amount}>₹1,500</span>
-          </div>
-          <div className={styles.spendingItems}>
-            <img src="https://img.icons8.com/color/96/000000/ticket.png" alt="Entertainment" />
-            <span>Entertainment</span>
-            <span className={styles.amount}>₹1,100</span>
-          </div>
+      {/* Main */}
+      <main style={{
+        maxWidth: '1100px',
+        margin: '2rem auto 4rem',
+        padding: '0 1rem',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '2rem',
+        fontFamily: 'Segoe UI, sans-serif'
+      }}>
+
+        {/* Spending Overview */}
+        <section style={{
+          background: 'white',
+          padding: '1.8rem',
+          borderRadius: '12px',
+          boxShadow: '0 6px 15px rgba(0, 0, 0, 0.08)',
+          display: 'flex',
+          flexDirection: 'column',
+          animation: 'slideUp 0.8s ease forwards'
+        }}>
+          <h2 style={{ fontWeight: '700', marginBottom: '1rem', color: '#4f46e5' }}>Spending Overview</h2>
+          {[
+            { label: 'Groceries', img: 'https://img.icons8.com/color/96/000000/shopping-cart--v1.png', amount: '₹4,500' },
+            { label: 'Dining', img: 'https://img.icons8.com/color/96/000000/restaurant.png', amount: '₹2,200' },
+            { label: 'Transport', img: 'https://img.icons8.com/color/96/000000/car--v1.png', amount: '₹1,500' },
+            { label: 'Entertainment', img: 'https://img.icons8.com/color/96/000000/ticket.png', amount: '₹1,100' }
+          ].map((item, idx) => (
+            <div key={idx} style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '0.8rem'
+            }}>
+              <img src={item.img} alt={item.label} style={{
+                maxWidth: '80px',
+                marginRight: '1rem',
+                borderRadius: '8px',
+                flexShrink: 0
+              }} />
+              <span style={{ fontWeight: '600', fontSize: '1.1rem' }}>{item.label}</span>
+              <span style={{
+                marginLeft: 'auto',
+                fontWeight: '700',
+                color: '#dc2626'
+              }}>{item.amount}</span>
+            </div>
+          ))}
         </section>
 
-        <section
-          className={`${styles.card} ${styles.upcomingBills}`}
-          style={{ animationDelay: '0.3s' }}
-        >
-          <h2>Upcoming Bills</h2>
-          <ul>
-            <li>
-              <div className={styles.billDetails}>
-                Electricity Bill
-                <small>Due: 15 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹3,200</div>
-            </li>
-            <li>
-              <div className={styles.billDetails}>
-                Internet Bill
-                <small>Due: 18 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹850</div>
-            </li>
-            <li>
-              <div className={styles.billDetails}>
-                Credit Card Payment
-                <small>Due: 22 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹5,000</div>
-            </li>
-            <li>
-              <div className={styles.billDetails}>
-                Water Bill
-                <small>Due: 25 June 2025</small>
-              </div>
-              <div className={styles.billAmount}>₹600</div>
-            </li>
+        {/* Upcoming Bills */}
+        <section style={{
+          background: 'white',
+          padding: '1.8rem',
+          borderRadius: '12px',
+          boxShadow: '0 6px 15px rgba(0, 0, 0, 0.08)',
+          display: 'flex',
+          flexDirection: 'column',
+          animation: 'slideUp 0.8s ease forwards'
+        }}>
+          <h2 style={{ fontWeight: '700', marginBottom: '1rem', color: '#4f46e5' }}>Upcoming Bills</h2>
+          <ul style={{
+            listStyle: 'none',
+            marginTop: '1rem',
+            padding: 0
+          }}>
+            {[
+              { label: 'Electricity Bill', due: '15 June 2025', amount: '₹3,200' },
+              { label: 'Internet Bill', due: '18 June 2025', amount: '₹850' },
+              { label: 'Credit Card Payment', due: '22 June 2025', amount: '₹5,000' },
+              { label: 'Water Bill', due: '25 June 2025', amount: '₹600' }
+            ].map((bill, idx) => (
+              <li key={idx} style={{
+                marginBottom: '1rem',
+                background: '#f9fafb',
+                padding: '0.8rem 1rem',
+                borderRadius: '8px',
+                boxShadow: 'inset 0 0 6px #c7d2fe',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                fontWeight: '600'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  color: '#555',
+                  fontWeight: '400',
+                  fontSize: '0.9rem'
+                }}>
+                  {bill.label}
+                  <small>Due: {bill.due}</small>
+                </div>
+                <div style={{
+                  color: '#2563eb',
+                  fontWeight: '700',
+                  fontSize: '1.05rem'
+                }}>{bill.amount}</div>
+              </li>
+            ))}
           </ul>
         </section>
 
-        <section
-          className={`${styles.card} ${styles.incomeExpense}`}
-          style={{ animationDelay: '0.5s' }}
-        >
-          <h2>Income & Expense Summary</h2>
-          <p>Total Income: <strong>₹50,000</strong></p>
-          <p>Total Expenses: <strong>₹20,000</strong></p>
-          <p>Balance: <strong>₹30,000</strong></p>
+        {/* Income & Expense */}
+        <section style={{
+          background: 'white',
+          padding: '1.8rem',
+          borderRadius: '12px',
+          boxShadow: '0 6px 15px rgba(0, 0, 0, 0.08)',
+          display: 'flex',
+          flexDirection: 'column',
+          animation: 'slideUp 0.8s ease forwards'
+        }}>
+          <h2 style={{ fontWeight: '700', marginBottom: '1rem', color: '#4f46e5' }}>Income & Expense Summary</h2>
+          <p style={{ marginBottom: '0.5rem' }}>Total Income: <strong>₹50,000</strong></p>
+          <p style={{ marginBottom: '0.5rem' }}>Total Expenses: <strong>₹20,000</strong></p>
+          <p style={{ marginBottom: '0.5rem' }}>Balance: <strong>₹30,000</strong></p>
         </section>
       </main>
     </>
