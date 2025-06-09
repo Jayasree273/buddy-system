@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/head"; // You missed this import!
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -140,6 +141,6 @@ export default function Home() {
         </div>
         <div>&copy; 2025 Budget Buddy. All Rights Reserved.</div>
       </footer>
-    </>
-  );
+    </>
+  );
 }
