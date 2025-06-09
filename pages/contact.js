@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import Head from 'next/head';
 
 export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Us - Budget Buddy</title>
+        <title>Contact - Budget Buddy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
@@ -12,144 +13,132 @@ export default function Contact() {
         />
       </Head>
 
-      <main className="contactSection">
-        <h1 className="contactSectionTitle">Contact Us</h1>
+      {/* Header */}
+      <header style={{
+        backgroundColor: '#4f46e5',
+        color: 'white',
+        padding: '1.5rem 2rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        boxShadow: '0 4px 8px rgba(79, 70, 229, 0.3)',
+        fontFamily: 'Segoe UI, sans-serif'
+      }}>
+        <div style={{ fontSize: '1.8rem', fontWeight: '700' }}>Budget Buddy</div>
+        <nav>
+          <Link href="/" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>Home</Link>
+          <Link href="/contact" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>Contact</Link>
+          <Link href="/about" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>About Us</Link>
+          <Link href="/login" style={{
+            color: 'white',
+            marginLeft: '1.5rem',
+            textDecoration: 'none',
+            fontWeight: '600'
+          }}>Login</Link>
+        </nav>
+      </header>
 
-        <form className="formContainer" onSubmit={(e) => e.preventDefault()}>
-          <label className="label" htmlFor="name">
+      {/* Main */}
+      <main style={{
+        maxWidth: '600px',
+        margin: '3rem auto',
+        padding: '0 1rem',
+        fontFamily: 'Segoe UI, sans-serif',
+        background: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 6px 15px rgba(0,0,0,0.08)',
+        paddingBottom: '2rem'
+      }}>
+        <h1 style={{ color: '#4f46e5', fontWeight: '700', marginBottom: '1.5rem', textAlign: 'center' }}>
+          Contact Us
+        </h1>
+
+        <form style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+          <label style={{ fontWeight: '600', color: '#333' }}>
             Name
+            <input
+              type="text"
+              placeholder="Your name"
+              required
+              style={{
+                marginTop: '0.5rem',
+                padding: '0.7rem',
+                borderRadius: '8px',
+                border: '1.5px solid #ccc',
+                fontSize: '1rem'
+              }}
+            />
           </label>
-          <input
-            className="input"
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your full name"
-            required
-          />
 
-          <label className="label" htmlFor="email">
+          <label style={{ fontWeight: '600', color: '#333' }}>
             Email
+            <input
+              type="email"
+              placeholder="you@example.com"
+              required
+              style={{
+                marginTop: '0.5rem',
+                padding: '0.7rem',
+                borderRadius: '8px',
+                border: '1.5px solid #ccc',
+                fontSize: '1rem'
+              }}
+            />
           </label>
-          <input
-            className="input"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="your.email@example.com"
-            required
-          />
 
-          <label className="label" htmlFor="message">
+          <label style={{ fontWeight: '600', color: '#333' }}>
             Message
+            <textarea
+              placeholder="Write your message here..."
+              required
+              rows={5}
+              style={{
+                marginTop: '0.5rem',
+                padding: '0.7rem',
+                borderRadius: '8px',
+                border: '1.5px solid #ccc',
+                fontSize: '1rem',
+                resize: 'vertical'
+              }}
+            />
           </label>
-          <textarea
-            className="textarea"
-            id="message"
-            name="message"
-            rows="5"
-            placeholder="Write your message here..."
-            required
-          ></textarea>
 
-          <button className="button" type="submit">
+          <button
+            type="submit"
+            style={{
+              backgroundColor: '#4f46e5',
+              color: 'white',
+              fontWeight: '700',
+              fontSize: '1.1rem',
+              padding: '0.8rem',
+              borderRadius: '10px',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '1rem',
+              transition: 'background-color 0.3s ease'
+            }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#3730a3')}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#4f46e5')}
+          >
             Send Message
           </button>
         </form>
-
-        <div className="info">
-          <p>We typically respond within 1-2 business days.</p>
-        </div>
       </main>
-
-      <style jsx>{`
-        .contactSection {
-          max-width: 600px;
-          margin: 4rem auto;
-          padding: 2rem;
-          background-color: white;
-          border-radius: 12px;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-          font-family: 'Inter', sans-serif;
-          animation: slideUp 1s ease-in-out;
-        }
-
-        .contactSectionTitle {
-          text-align: center;
-          font-size: 2.4rem;
-          color: #4f46e5; /* Indigo-600 */
-          margin-bottom: 2rem;
-          font-weight: 600;
-        }
-
-        .formContainer {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .label {
-          margin-top: 1rem;
-          font-weight: 600;
-          color: #333;
-        }
-
-        .input,
-        .textarea {
-          padding: 0.8rem;
-          margin-top: 0.4rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-size: 1rem;
-          transition: border-color 0.3s ease;
-        }
-
-        .input:focus,
-        .textarea:focus {
-          outline: none;
-          border-color: #4f46e5;
-          box-shadow: 0 0 5px #c7d2fe;
-        }
-
-        .textarea {
-          resize: vertical;
-          min-height: 120px;
-        }
-
-        .button {
-          margin-top: 2rem;
-          background-color: #4f46e5;
-          color: white;
-          padding: 1rem;
-          font-size: 1.1rem;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          font-weight: 600;
-          transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-          background-color: #4338ca;
-        }
-
-        .info {
-          margin-top: 2rem;
-          text-align: center;
-          font-size: 0.95rem;
-          color: #555;
-        }
-
-        @keyframes slideUp {
-          0% {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </>
   );
 }
